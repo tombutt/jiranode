@@ -17,6 +17,13 @@ app.get("/release/:project/:number", function(req, res){
     }  
 })
 
+app.get("releasenotes/:project/:number", function(req, res){
+    release.makeReleaseNotesRequest(req, myCallback);
+    function myCallback(body){
+        res.send(body);
+    }
+})
+
 var server = app.listen(server_port, server_ip_address, function() {
     var host = server.address().address
     var port = server.address().port
